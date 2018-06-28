@@ -14,6 +14,8 @@ import com.example.j053.flixter.models.Movie;
 
 import java.util.ArrayList;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
     // list of movies
     ArrayList<Movie> movies;
@@ -61,6 +63,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         // load image using glide
         GlideApp.with(context)
                 .load(imageUrl)
+                .transform(new RoundedCornersTransformation(30, 10))
                 .placeholder(R.drawable.flicks_movie_placeholder)
                 .error(R.drawable.flicks_movie_placeholder)
                 .into(viewHolder.ivPosterImage);
