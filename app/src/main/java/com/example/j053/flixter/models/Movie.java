@@ -2,13 +2,21 @@ package com.example.j053.flixter.models;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
+@Parcel
 public class Movie {
 
     // values from API
-    private String title;
-    private String overview;
-    private String posterPath; // not full URL
+    // Fields made public for Parceler
+    String title;
+    String overview;
+    String posterPath; // not full URL
+    String backdropPath;
+    Double voteAverage;
+
+    // Empty constructor required for parceler
+    public Movie() {}
 
 
     // initialize from JSON data
@@ -16,6 +24,8 @@ public class Movie {
         title = object.getString("title");
         overview = object.getString("overview");
         posterPath = object.getString("poster_path");
+        backdropPath = object.getString("backdrop_path");
+        voteAverage = object.getDouble("vote_average");
     }
 
     public String getTitle() {
@@ -28,5 +38,13 @@ public class Movie {
 
     public String getPosterPath() {
         return posterPath;
+    }
+
+    public String getBackdropPath() {
+        return backdropPath;
+    }
+
+    public Double getVoteAverage() {
+        return voteAverage;
     }
 }
